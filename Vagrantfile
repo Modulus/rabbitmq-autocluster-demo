@@ -10,8 +10,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master_config.vm.host_name = 'saltmaster.local'
     master_config.vm.network "private_network", ip: "192.168.50.20" #, :bridge => "eth1"
     master_config.vm.synced_folder "salt/", "/srv/salt"
-    master_config.vm.synced_folder "pillar/", "/srv/pillar"
-    master_config.vm.synced_folder "formulas/", "/srv/formulas"
   #  master_config.landrush.enabled = true
 
 
@@ -23,8 +21,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.minion_pub = "vagrant_config/keys/master_minion.pub"
       salt.seed_master = {
                           "minion1" => "vagrant_config/keys/minion1.pub",
-                          #"minion2" => "vagrant_config/keys/minion2.pub",
-                          #"minion3" => "vagrant_config/keys/minion3.pub",
+                          "minion2" => "vagrant_config/keys/minion2.pub",
+                          "minion3" => "vagrant_config/keys/minion3.pub",
                           "master" => "vagrant_config/keys/master_minion.pub"
                          }
 
