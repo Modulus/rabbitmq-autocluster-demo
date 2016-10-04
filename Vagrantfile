@@ -69,7 +69,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Comment out the above line as well
     #minion_config.vm.box = "chef/centos-6.5"
     minion_config.vm.host_name = 'saltminion2.local'
-    minion_config.vm.network "public_network", ip: "192.168.50.22", :bridge => "eth1"
+    minion_config.vm.network "private_network", ip: "192.168.50.22"
     #minion_config.landrush.enabled = true
 
 
@@ -96,7 +96,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Comment out the above line as well
     #minion_config.vm.box = "chef/centos-6.5"
     minion_config.vm.host_name = 'saltminion3.local'
-    minion_config.vm.network "public_network", ip: "192.168.50.23", :bridge => "eth1"
+    minion_config.vm.network "private_network", ip: "192.168.50.23"
     #minion_config.landrush.enabled = true
 
     #minion_config.vm.provider "virtualbox" do |v|
