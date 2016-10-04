@@ -1,0 +1,4 @@
+grains:
+  role:
+    - codequality
+    - build

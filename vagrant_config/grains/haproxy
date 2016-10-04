@@ -1,0 +1,5 @@
+grains:
+  role:
+    - mq
+  leader:
+    - true
