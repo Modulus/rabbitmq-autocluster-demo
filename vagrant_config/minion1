@@ -75,6 +75,7 @@ grains:
   role:
     - mq
     - vagrant
+    - leader
   env: dev
 
 # Where cache data goes.

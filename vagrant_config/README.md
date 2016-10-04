@@ -1,4 +1,9 @@
-This config folder is for vagrant. Do not copy this out to ec2
+#what is this?
+Use of the rabbitmq autocluster plugin with docker containers, consul and registrator
+containers, containers, container aaaaand containers
 
+## Apply highstate
+sudo salt "*" state.highstate
 
-s = re.search("(server)([\ \t]+)(dev-push2)([\ \t]+)(?P<ip>\d+\.\d+.\d+.\d+):(?P<port>\d+)", x)
+## Setup consul cluster
+sudo salt-run state.orchestrate orch

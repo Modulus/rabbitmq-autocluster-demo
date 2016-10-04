@@ -5,10 +5,17 @@ rabbitmq ubuntu repo:
     - file: /etc/apt/sources.list.d/rabbitmq.list
     - key_url: https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
 
+
+
 rabbitmq-server:
   pkg.installed
 
+
 /var/lib/rabbitmq/.erlang.cookie:
   file.managed:
-    - contents:
-      - d8d618ab8505a1fd02c201a6e79ecd08bdb744d1  
+    - makedirs: True
+    - contents: "XHEHDUOFYVZAQPGPDAPU"
+    - require:
+      - pkg: rabbitmq-server
+
+        
