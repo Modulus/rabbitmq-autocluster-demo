@@ -47,6 +47,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     minion_config.vm.network "forwarded_port", guest: 3000 , host: 3000, auto_correct: true
     minion_config.vm.network "forwarded_port", guest: 8083 , host: 8083, auto_correct: true
     minion_config.vm.network "forwarded_port", guest: 8086 , host: 8086, auto_correct: true
+    minion_config.vm.network "forwarded_port", guest: 15672 , host: 15672, auto_correct: true
     #minion_config.vm.provider "virtualbox" do |v|
     #  v.memory = 1024
     #  v.cpus = 2

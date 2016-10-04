@@ -7,3 +7,8 @@ rabbitmq ubuntu repo:
 
 rabbitmq-server:
   pkg.installed
+
+/var/lib/rabbitmq/.erlang.cookie:
+  file.managed:
+    - contents:
+      - d8d618ab8505a1fd02c201a6e79ecd08bdb744d1  
