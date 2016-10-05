@@ -7,6 +7,28 @@ sync_all dev:
       - salt: highstate consul follower
       - salt: highstate consul leader
 
+setup hosts:
+  salt.state:
+    - tgt: "G@role:mq"
+    - tgt_type: compound
+    - sls:
+      - hosts
+    - require_in:
+      - salt: highstate consul follower
+      - salt: highstate consul leader
+
+build autocluster container image:
+  salt.state:
+    - tgt: "role:mq"
+    - tgt_type: grain
+    - sls:
+      - rabbitmq.auto
+    - require:
+      - salt: setup hosts
+    - require_in:
+      - salt: highstate consul follower
+      - salt: highstate consul leader
+
 
 highstate consul leader:
   salt.state:
