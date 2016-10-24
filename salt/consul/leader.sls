@@ -5,9 +5,10 @@ consul.running:
   dockerng.running:
     - image: consul:v0.7.0
     - name: consul
-    - hostname: {{grains['id']}}
+    #- hostname: {{grains['id']}} Cannot have hostname with host mode
     - restart_policy: always
     - unless: sudo docker ps | grep consul
+    - network_mode: host
     - binds:
       - /var/run/docker.sock:/tmp/docker.sock
     - require:

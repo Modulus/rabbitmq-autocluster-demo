@@ -14,8 +14,6 @@ nodegroups:
 
 
 
-
-
 #salt-api config:
 #rest_cherrypy:
 #  port: 8000
@@ -384,9 +382,9 @@ nodegroups:
 #     - /srv/salt/prod/services
 #     - /srv/salt/prod/states
 
-file_roots:
-  base:
-    - /srv/salt
+#file_roots:
+#  dev:
+#    - /srv/salt
 #  qa:
 #    - /srv/salt/qa
 #
@@ -500,7 +498,7 @@ hash_type: sha256
 # a top file and sls files. However, pillar data does not need to be in the
 # highstate format, and is generally just key/value pairs.
 pillar_roots:
-  base:
+  dev:
     - /srv/pillar
   qa:
     - /srv/pillar/qa
