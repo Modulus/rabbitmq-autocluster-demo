@@ -12,6 +12,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master_config.vm.synced_folder "salt/", "/srv/salt"
     master_config.vm.synced_folder "pillar/", "/srv/pillar"
   #  master_config.landrush.enabled = true
+    master_config.vm.provider "virtualbox" do |v|
+      v.memory = 1024
+      v.cpus = 2
+    end
 
 
     master_config.vm.provision :salt do |salt|
