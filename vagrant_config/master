@@ -497,11 +497,11 @@ hash_type: sha256
 # Pillar is laid out in the same fashion as the file server, with environments,
 # a top file and sls files. However, pillar data does not need to be in the
 # highstate format, and is generally just key/value pairs.
-pillar_roots:
-  dev:
-    - /srv/pillar
-  qa:
-    - /srv/pillar/qa
+#pillar_roots:
+#  dev:
+#    - /srv/pillar
+#  qa:
+#    - /srv/pillar/qa
 #
 #ext_pillar:
 #  - hiera: /etc/hiera.yaml
