@@ -8,22 +8,21 @@ consul.running:
     #- hostname: {{grains['id']}} Cannot have hostname with host mode
     - restart_policy: always
     - unless: sudo docker ps | grep consul
-    - network_mode: host
     - binds:
       - /var/run/docker.sock:/tmp/docker.sock
     - require:
       - sls: docker.image.consul
     - port_bindings:
-      - {{grains['fqdn_ip4'][0]}}:8300:8300/udp
-      - {{grains['fqdn_ip4'][0]}}:8300:8300
-      - {{grains['fqdn_ip4'][0]}}:8301:8301
-      - {{grains['fqdn_ip4'][0]}}:8301:8301/udp
-      - {{grains['fqdn_ip4'][0]}}:8302:8302
-      - {{grains['fqdn_ip4'][0]}}:8302:8302/udp
-      - {{grains['fqdn_ip4'][0]}}:8400:8400
-      - {{grains['fqdn_ip4'][0]}}:8500:8500
-      - {{grains['fqdn_ip4'][0]}}:8600:8600
-      - {{grains['fqdn_ip4'][0]}}:8600:8600/udp
+      - 8300:8300/udp
+      - 8300:8300
+      - 8301:8301
+      - 8301:8301/udp
+      - 8302:8302
+      - 8302:8302/udp
+      - 8400:8400
+      - 8500:8500
+      - 8600:8600
+      - 8600:8600/udp
     - environment:
       - GOMAXPROCS: '4'
     - command:
@@ -31,7 +30,7 @@ consul.running:
       - -server
       - -data-dir=/tmp/consul
       - -node={{grains["id"]}}
-      - -advertise={{grains['fqdn_ip4'][0]}}
+      - -advertise={{grains['ip_interfaces']['eth1'][0]}}
       {% for server, addrs in salt['mine.get']('G@role:mq and G@role:leader', 'network.ip_addrs', expr_form='compound').items() %}
       - -retry-join={{server}}
       {% endfor %}
