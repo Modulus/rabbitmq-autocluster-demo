@@ -7,3 +7,4 @@ docker-registries:
     email: ""
     password: ""
     username: ""
+    

@@ -3,11 +3,11 @@ include:
 
 consul.running:
   dockerng.running:
-    - image: consul:v0.7.0
+    - image: progrium/consul
     - name: consul
     #- hostname: {{grains['id']}} cannot have hostname with host network_mode
     - restart_policy: always
-    - unless: sudo docker ps | grep consul
+    #- unless: sudo docker ps | grep consul
     - binds:
       - /var/run/docker.sock:/tmp/docker.sock
     - require:
@@ -24,11 +24,11 @@ consul.running:
       - 8600:8600
       - 8600:8600/udp
     - command:
+      - consul
       - agent
-      - -server
-      - -data-dir=/tmp/consul
-      - -node={{grains["id"]}}
-      - -advertise={{grains['ip_interfaces']['eth1'][0]}}
+      - "-server"
+      - "-h {{grains['id']}}"
+      - "-advertise {{grains['ip_interfaces']['eth1'][0]}}"
       {% for server, addrs in salt['mine.get']('G@role:mq and G@role:leader', 'network.ip_vagrant', expr_form='compound').items() %}
-      - -retry-join={{addrs[0]}}
+      - "-join={{addrs[0]}}"
       {% endfor %}
