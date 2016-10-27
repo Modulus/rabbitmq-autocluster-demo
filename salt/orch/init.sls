@@ -36,9 +36,9 @@ highstate consul leader:
     - tgt_type: compound
     - sls:
       - consul.leader
-    - require_in:
-      - salt: highstate rabbitmq client
-      - salt: highshtate rabbitmq leader
+    #- require_in:
+    #  - salt: highstate rabbitmq client
+    #  - salt: highshtate rabbitmq leader
 
 highstate consul follower:
   salt.state:
@@ -48,9 +48,9 @@ highstate consul follower:
       - consul.follower
     - require:
       - salt: highstate consul leader
-    - require_in:
-      - salt: highstate rabbitmq client
-      - salt: highshtate rabbitmq leader
+    #- require_in:
+    #  - salt: highstate rabbitmq client
+    #  - salt: highshtate rabbitmq leader
 
 #highshtate rabbitmq leader:
 #  salt.state:
