@@ -5,6 +5,7 @@ consul.running:
     #- hostname: {{grains['id']}} Cannot have hostname with host mode
     - restart_policy: always
     - unless: sudo docker ps | grep consul
+    - network_mode: host
     - binds:
       - /var/run/docker.sock:/tmp/docker.sock
     - require:
@@ -26,6 +27,7 @@ registrator.running:
     - image: gliderlabs/registrator
     - name: registrator
     - command: consul://consul:8500
+    - network_mode: host
     - restart_policy: always
     - links: consul:consul
     - require:
