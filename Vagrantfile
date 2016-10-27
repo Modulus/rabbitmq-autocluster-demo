@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master_config.vm.network "private_network", ip: "192.168.50.20" #, :bridge => "eth1"
     master_config.vm.synced_folder "salt/", "/srv/salt"
     master_config.vm.synced_folder "pillar/", "/srv/pillar"
-  #  master_config.landrush.enabled = true
+    master_config.landrush.enabled = true
     master_config.vm.provider "virtualbox" do |v|
       v.memory = 1024
       v.cpus = 2
@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     minion_config.vm.box = "ubuntu/trusty64"
     minion_config.vm.host_name = 'minion1'
     minion_config.vm.network "private_network", ip: "192.168.50.21"
-    #minion_config.landrush.enabled = true
+    minion_config.landrush.enabled = true
     minion_config.vm.network "forwarded_port", guest: 443, host: 443, auto_correct: true
     minion_config.vm.network "forwarded_port", guest: 80 , host: 80, auto_correct: true
     minion_config.vm.network "forwarded_port", guest: 3000 , host: 3000, auto_correct: true
@@ -76,7 +76,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #minion_config.vm.box = "chef/centos-6.5"
     minion_config.vm.host_name = 'minion2'
     minion_config.vm.network "private_network", ip: "192.168.50.22"
-    #minion_config.landrush.enabled = true
+    minion_config.landrush.enabled = true
 
 
     minion_config.vm.provision :salt do |salt|
@@ -103,7 +103,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #minion_config.vm.box = "chef/centos-6.5"
     minion_config.vm.host_name = 'minion3'
     minion_config.vm.network "private_network", ip: "192.168.50.23"
-    #minion_config.landrush.enabled = true
+    minion_config.landrush.enabled = true
 
     #minion_config.vm.provider "virtualbox" do |v|
     #  v.memory = 1024

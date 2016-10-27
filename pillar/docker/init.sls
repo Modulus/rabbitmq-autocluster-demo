@@ -7,3 +7,7 @@ docker-registries:
     email: ""
     password: ""
     username: ""
+  https://registry-1.docker.io:
+    email: ""
+    password: ""
+    username: ""  

@@ -1,6 +1,6 @@
 include:
   - docker
-  
+
 /opt/rabbitmq/Dockerfile:
   file.managed:
     - makedirs: True
@@ -19,11 +19,12 @@ coderpews/rabbitmq:latest:
       - file: /opt/rabbitmq/Dockerfile
       - archive: /opt/rabbitmq/autocluster
 
-# Can be used for debugging builds
-#coderpews/rabbitmq:latest:
-#  cmd.run:
-#    - cwd: /opt/rabbitmq/
-#    - name: docker build -t coderpews/rabbitmq:latest .
-#    - require:
-#      - file: /opt/rabbitmq/Dockerfile
-#      - archive: /opt/rabbitmq/autocluster
+rabbitmq.manual.build:
+   cmd.run:
+     - name: sudo docker build -t coderpews/rabbitmq .
+     - cwd: /opt/rabbitmq
+     - onfail:
+       - dockerng: coderpews/rabbitmq:latest
+     - require:
+       - file: /opt/rabbitmq/Dockerfile
+       - archive: /opt/rabbitmq/autocluster

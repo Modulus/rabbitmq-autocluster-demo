@@ -1,6 +1,6 @@
-FROM rabbitmq:3.6.3-management
+FROM rabbitmq:3.6-management
 
-ENV rabbitmq_version 3.6.3
+ENV rabbitmq_version 3.6
 ENV plugins_path /usr/lib/rabbitmq/lib/rabbitmq_server-${rabbitmq_version}/plugins/
 
 COPY autocluster/plugins/*.ez ${plugins_path}
