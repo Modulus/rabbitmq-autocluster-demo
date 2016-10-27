@@ -11,7 +11,7 @@ rabbitmq.running:
       - {{grains['fqdn_ip4'][0]}}:25672:25672
       - {{grains['fqdn_ip4'][0]}}:35197:35197
     - environment:
-      - RABBITMQ_NODENAME: "{{grains['id']}}"
+      - RABBITMQ_NODENAME: "{{grains['fqdn_ip4'][0]}}"
       - AUTOCLUSTER_TYPE: "consul"
       - CONSUL_HOST: "localhost"
       - CONSUL_PORT: '8500'
@@ -20,4 +20,4 @@ rabbitmq.running:
       - RABBITMQ_ERLANG_COOKIE: "{{pillar['RABBITMQ_ERLANG_COOKIE']}}"
       - RABBITMQ_USE_LONGNAME: "false"
       - CONSUL_SERVICE_PORT: "5672"
-      - AUTOCLUSTER_LOG_LEVEL: debug 
+      - AUTOCLUSTER_LOG_LEVEL: debug
