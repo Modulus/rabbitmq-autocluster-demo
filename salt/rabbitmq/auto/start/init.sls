@@ -2,14 +2,14 @@ rabbitmq.running:
   dockerng.running:
     - name: rabbitmq
     - image: coderpews/rabbitmq
-    - network_mode: host
+    - network_mode: bridge
     - port_bindings:
-      - 0.0.0.0:4369:4369
-      - 0.0.0.0:5672:5672
-      - 0.0.0.0:5671:5671
-      - 0.0.0.0:15672:15672
-      - 0.0.0.0:25672:25672
-      - 0.0.0.0:35197:35197
+      - {{grains['fqdn_ip4'][0]}}:4369:4369
+      - {{grains['fqdn_ip4'][0]}}:5672:5672
+      - {{grains['fqdn_ip4'][0]}}:5671:5671
+      - {{grains['fqdn_ip4'][0]}}:15672:15672
+      - {{grains['fqdn_ip4'][0]}}:25672:25672
+      - {{grains['fqdn_ip4'][0]}}:35197:35197
     - environment:
       - RABBITMQ_NODENAME: "{{grains['id']}}"
       - AUTOCLUSTER_TYPE: "consul"
