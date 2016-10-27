@@ -1,5 +1,3 @@
-setup
-
 rabbitmq.running:
   dockerng.running:
     - name: rabbitmq
