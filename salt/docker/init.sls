@@ -3,7 +3,7 @@ include:
 
 dockerpy:
   pip.installed:
-    - name: docker-py == 1.10.4
+    - name: docker-py == 1.4.0
     - require:
       - sls: python
     - unless: pip list | grep docker-py
