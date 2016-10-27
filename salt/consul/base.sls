@@ -20,3 +20,13 @@ consul.running:
       - 8500:8500
       - 8600:8600
       - 8600:8600/udp
+
+registrator.running:
+  dockerng.running:
+    - image: registrator
+    - name: registrator
+    - command: consul://consul:8500
+    - restart_policy: always
+    - links: consul:consul
+    - require:
+      - dockerng: consul.running
