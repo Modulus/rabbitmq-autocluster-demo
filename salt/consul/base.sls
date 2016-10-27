@@ -29,5 +29,6 @@ registrator.running:
     - command: consul://localhost:8500
     - network_mode: host
     - restart_policy: always
+    - binds: /var/run/docker.sock:/tmp/docker.sock
     - require:
       - dockerng: consul.running
