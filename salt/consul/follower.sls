@@ -13,8 +13,8 @@ consul.running:
     - require:
       - sls: docker.image.consul
     - port_bindings:
-      - 127.0.0.1:8300:8300/udp
-      - 127.0.0.1:8300:8300
+      - 8300:8300/udp
+      - 8300:8300
       - 8301:8301
       - 8301:8301/udp
       - 8302:8302
