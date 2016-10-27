@@ -69,13 +69,13 @@ highstate rabbitmq client:
       - rabbitmq.auto.start
 
 # Restart the rabbitmq services
-restart rabbitmq:
-  salt.function:
-    - name: dockerng.restart
-    - tgt: "role:mq"
-    - tgt_type: compound
-    - arg:
-      - rabbitmq
-    - require:
-      - salt: highshtate rabbitmq leader
-      - salt: highstate rabbitmq client   
+#restart rabbitmq:
+#  salt.function:
+#    - name: dockerng.restart
+#    - tgt: "role:mq"
+#    - tgt_type: compound
+#    - arg:
+#      - rabbitmq
+#    - require:
+#      - salt: highshtate rabbitmq leader
+#      - salt: highstate rabbitmq client   
