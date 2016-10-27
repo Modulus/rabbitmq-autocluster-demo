@@ -6,9 +6,3 @@ add {{server}} with {{addrs[0]}} to hostsfile:
     - ip: {{addrs[0]}}
 {% endif %}
 {% endfor %}
-
-
-{% if "vagrant" in grains["role"] %}
-
-{% else %}
-{% endif %}
