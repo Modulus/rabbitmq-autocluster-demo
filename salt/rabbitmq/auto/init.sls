@@ -18,6 +18,8 @@ coderpews/rabbitmq:latest:
     - require:
       - file: /opt/rabbitmq/Dockerfile
       - archive: /opt/rabbitmq/autocluster
+    - require_in:
+      - dockerng: rabbitmq.running
 
 rabbitmq.manual.build:
    cmd.run:
@@ -28,3 +30,17 @@ rabbitmq.manual.build:
      - require:
        - file: /opt/rabbitmq/Dockerfile
        - archive: /opt/rabbitmq/autocluster
+     - require_in:
+       - dockerng: rabbitmq.running
+
+rabbitmq.running:
+  dockerng.running:
+    - name: rabbitmq
+    - image: coderpews/rabbitmq
+    - port_bindings:
+      - 4369:4369
+      - 5672:5672
+      - 5671:5671
+      - 15672:15672
+      - 25672:25672
+      - 35197:35197
