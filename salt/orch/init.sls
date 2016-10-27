@@ -57,7 +57,7 @@ highshtate rabbitmq leader:
     - tgt: "G@role:leader and G@role:mq"
     - tgt_type: compound
     - sls:
-      - rabbitmq.auto
+      - rabbitmq.auto.start
     - require_in:
       - salt: highstate rabbitmq client
 
@@ -66,4 +66,4 @@ highstate rabbitmq client:
     - tgt: "G@role:mq not G@role:leader"
     - tgt_type: compound
     - sls:
-      - rabbitmq.auto
+      - rabbitmq.auto.start
