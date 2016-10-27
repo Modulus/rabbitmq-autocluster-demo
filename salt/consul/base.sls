@@ -26,9 +26,8 @@ registrator.running:
   dockerng.running:
     - image: gliderlabs/registrator
     - name: registrator
-    - command: consul://consul:8500
+    - command: consul://localhost:8500
     - network_mode: host
     - restart_policy: always
-    - links: consul:consul
     - require:
       - dockerng: consul.running
