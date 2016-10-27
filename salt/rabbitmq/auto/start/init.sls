@@ -4,12 +4,12 @@ rabbitmq.running:
     - image: coderpews/rabbitmq
     - network_mode: host
     - port_bindings:
-      - 4369:4369
-      - 5672:5672
-      - 5671:5671
-      - 15672:15672
-      - 25672:25672
-      - 35197:35197
+      - 0.0.0.0:4369:4369
+      - 0.0.0.0:5672:5672
+      - 0.0.0.0:5671:5671
+      - 0.0.0.0:15672:15672
+      - 0.0.0.0:25672:25672
+      - 0.0.0.0:35197:35197
     - environment:
       - RABBITMQ_NODENAME: "{{grains['id']}}"
       - AUTOCLUSTER_TYPE: "consul"
@@ -19,4 +19,4 @@ rabbitmq.running:
       - CONSUL_SERVICE_TTL: "30"
       - RABBITMQ_ERLANG_COOKIE: "{{pillar['RABBITMQ_ERLANG_COOKIE']}}"
       - RABBITMQ_USE_LONGNAME: "false"
-      - CONSUL_SERVICE_PORT: "5672"    
+      - CONSUL_SERVICE_PORT: "5672"
