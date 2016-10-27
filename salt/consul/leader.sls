@@ -30,7 +30,8 @@ consul.running:
       - -server
       - -data-dir=/tmp/consul
       - -node={{grains["id"]}}
+      {% if "vagrant" in grains["role"] %}
       - -advertise={{grains['ip_interfaces']['eth1'][0]}}
-      {% for server, addrs in salt['mine.get']('G@role:mq and G@role:leader', 'network.ip_addrs', expr_form='compound').items() %}
-      - -retry-join={{server}}
-      {% endfor %}
+      {% else %}
+      - -advertise={{grains['fqdn_ip4'][0]}}
+      {% endif %}
