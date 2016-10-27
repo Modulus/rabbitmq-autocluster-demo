@@ -5,7 +5,7 @@ consul.running:
   dockerng.running:
     - image: consul:v0.7.0
     - name: consul
-    #- hostname: {{grains['id']}} Cannot have hostname with host mode
+    #- hostname: {{grains['id']}} cannot have hostname with host network_mode
     - restart_policy: always
     - unless: sudo docker ps | grep consul
     - binds:
@@ -23,15 +23,12 @@ consul.running:
       - 8500:8500
       - 8600:8600
       - 8600:8600/udp
-    - environment:
-      - GOMAXPROCS: '4'
     - command:
       - agent
       - -server
       - -data-dir=/tmp/consul
       - -node={{grains["id"]}}
-      {% if "vagrant" in grains["role"] %}
-      - -advertise={{grains['ip_interfaces']['eth1'][0]}}
-      {% else %}
       - -advertise={{grains['fqdn_ip4'][0]}}
-      {% endif %}
+      {% for server, addrs in salt['mine.get']('G@role:mq and G@role:leader', 'network.ip_addrs', expr_form='compound').items() %}
+      - -retry-join={{addrs[0]}}
+      {% endfor %}
