@@ -14,8 +14,8 @@ rabbitmq.running:
       - RABBITMQ_NODENAME: rabbit@{{grains['fqdn']}}
       - AUTOCLUSTER_TYPE: "consul"
       - CONSUL_HOST: "localhost"
-      - CONSUL_PORT: '8500'
-      - CLUSTER_NAME: PUSH-MQ-CLUSTER
+      - CONSUL_PORT: "8500"
+      - CLUSTER_NAME: rabbitcluster
       - CONSUL_SERVICE_TTL: "30"
       - RABBITMQ_ERLANG_COOKIE: "{{pillar['RABBITMQ_ERLANG_COOKIE']}}"
       - RABBITMQ_USE_LONGNAME: "true"
@@ -24,5 +24,5 @@ rabbitmq.running:
       - RABBITMQ_DEFAULT_USER: guest
       - RABBITMQ_DEFAULT_PASS: guest
       - HOSTNAME: {{grains['fqdn']}}
-      #- CONSUL_SVC_ADDR: {{grains['fqdn_ip4'][0]}}
-      - CONSUL_SVC_ADDR_AUTO: "true"
+      - CONSUL_SVC_ADDR: {{grains['fqdn']}}
+      #- CONSUL_SVC_ADDR_AUTO: "true"
