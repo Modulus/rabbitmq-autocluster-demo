@@ -24,3 +24,4 @@ rabbitmq.running:
       - RABBITMQ_DEFAULT_USER: guest
       - RABBITMQ_DEFAULT_PASS: guest
       - HOSTNAME: {{grains['fqdn']}}
+      - CONSUL_SVC_ADDR: {{grains['fqdn_ip4'][0]}}
