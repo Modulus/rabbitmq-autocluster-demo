@@ -18,8 +18,6 @@ coderpews/rabbitmq:latest:
     - require:
       - file: /opt/rabbitmq/Dockerfile
       - archive: /opt/rabbitmq/autocluster
-    - require_in:
-      - dockerng: rabbitmq.running
 
 rabbitmq.manual.build:
    cmd.run:
