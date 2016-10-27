@@ -2,7 +2,7 @@ rabbitmq.running:
   dockerng.running:
     - name: rabbitmq
     - image: coderpews/rabbitmq
-    - network_mode: bridge
+    - network_mode: host
     - port_bindings:
       - {{grains['fqdn_ip4'][0]}}:4369:4369
       - {{grains['fqdn_ip4'][0]}}:5672:5672
