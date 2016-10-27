@@ -32,8 +32,7 @@ consul.running:
       - -node={{grains["id"]}}
       - -bootstrap-expect=3
       {% if "vagrant" in grains["role"] %}
-      - -bind={{grains['ip_interfaces']['eth1'][0]}}
+      - -advertise={{grains['ip_interfaces']['eth1'][0]}}
       {% else %}
-      - -bind={{grains['fqdn_ip4'][0]}}
-      - -client=127.0.0.1
+      - -advertise={{grains['fqdn_ip4'][0]}}
       {% endif %}
