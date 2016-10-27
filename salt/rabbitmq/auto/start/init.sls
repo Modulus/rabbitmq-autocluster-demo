@@ -14,6 +14,6 @@ rabbitmq.running:
       - RABBITMQ_NODENAME: "{{grains['id']}}"
       - AUTOCLUSTER_TYPE: "consul"
       - CONSUL_HOST: "localhost"
-      - CONSUL_PORT: "8500"
+      - CONSUL_PORT: '8500'
       - CONSUL_SERVICE_TTL: "30"
       - RABBITMQ_ERLANG_COOKIE: "{{pillar['RABBITMQ_ERLANG_COOKIE']}}"
