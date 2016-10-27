@@ -23,7 +23,7 @@ consul.running:
 
 registrator.running:
   dockerng.running:
-    - image: registrator
+    - image: gliderlabs/registrator
     - name: registrator
     - command: consul://consul:8500
     - restart_policy: always
