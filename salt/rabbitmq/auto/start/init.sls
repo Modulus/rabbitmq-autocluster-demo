@@ -20,3 +20,4 @@ rabbitmq.running:
       - RABBITMQ_ERLANG_COOKIE: "{{pillar['RABBITMQ_ERLANG_COOKIE']}}"
       - RABBITMQ_USE_LONGNAME: "false"
       - CONSUL_SERVICE_PORT: "5672"
+      - AUTOCLUSTER_LOG_LEVEL: debug 
