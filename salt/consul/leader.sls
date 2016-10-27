@@ -35,4 +35,5 @@ consul.running:
       - -bind={{grains['ip_interfaces']['eth1'][0]}}
       {% else %}
       - -bind={{grains['fqdn_ip4'][0]}}
+      - -client=127.0.0.1
       {% endif %}

@@ -35,6 +35,7 @@ consul.running:
       {% endfor %}
       {% else %}
       - -bind={{grains['fqdn_ip4'][0]}}
+      - -client=127.0.0.1  
       {% for server, addrs in salt['mine.get']('G@role:mq and G@role:leader', 'network.ip_addrs', expr_form='compound').items() %}
       - -retry-join={{addrs[0]}}
       {% endfor %}
