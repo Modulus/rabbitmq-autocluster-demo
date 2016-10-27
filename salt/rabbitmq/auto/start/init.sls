@@ -11,7 +11,7 @@ rabbitmq.running:
       - {{grains['fqdn_ip4'][0]}}:25672:25672
       - {{grains['fqdn_ip4'][0]}}:35197:35197
     - environment:
-      - RABBITMQ_NODENAME: "rabbit@{{grains['fqdn_ip4'][0]}}"
+      - RABBITMQ_NODENAME: rabbit@{{grains['fqdn']}}
       - AUTOCLUSTER_TYPE: "consul"
       - CONSUL_HOST: "localhost"
       - CONSUL_PORT: '8500'
@@ -23,3 +23,4 @@ rabbitmq.running:
       - AUTOCLUSTER_LOG_LEVEL: debug
       - RABBITMQ_DEFAULT_USER: guest
       - RABBITMQ_DEFAULT_PASS: guest
+      - HOSTNAME: {{grains['fqdn']}}
