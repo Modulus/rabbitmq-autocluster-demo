@@ -35,13 +35,13 @@ highstate consul leader:
     - tgt: "G@role:leader and G@role:mq"
     - tgt_type: compound
     - sls:
-      - consul.leader
+      - consul.ec2.leader
 
 highstate consul follower:
   salt.state:
     - tgt: "G@role:mq not G@role:leader"
     - tgt_type: compound
     - sls:
-      - consul.follower
+      - consul.ec2.follower
     - require:
       - salt: highstate consul leader
