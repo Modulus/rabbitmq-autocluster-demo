@@ -46,7 +46,7 @@ rabbitmq.running:
       - 25672:25672
       - 35197:35197
     - environment:
-        RABBITMQ_NODENAME: grains["id"]
+        RABBITMQ_NODENAME: {{grains["id"]}}
         AUTOCLUSTER_TYPE: consul
         CONSUL_HOST: "localhost"
         CONSUL_PORT: 8500
